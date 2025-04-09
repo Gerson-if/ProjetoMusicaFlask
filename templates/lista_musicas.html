@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de musica</title>
+    <style type="text/css">
+        table, td, th {
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+    </style>
+</head>
+    <body>
+        <h2>{{ titulo }}</h2>
+        <table>
+            <tr>
+                <th> Nome da Musica</th>
+                <th> Cantor / Banda</th>
+                <th> Genero</th>
+            </tr>
+            {% for musics in musicas%}
+            <tr>
+                <td>{{musics.nome}}</td>
+                <td>{{musics.cantorBanda}}</td>
+                <td>{{musics.genero}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+
+    </body>
+</html>
