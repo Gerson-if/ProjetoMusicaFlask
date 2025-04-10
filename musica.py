@@ -20,5 +20,9 @@ def lista_musicas():
     return render_template('lista_musicas.html',
                            titulo = "Lista de Musicas - Aprendendo com Daniel",
                            musicas = lista)
+@app.route('/cadastrar')
+def cadastrar_musicas():
+    return render_template('cadastrar_musica.html',
+                           titulo = 'Cadastrar Musicas')
 
 app.run(debug=True) # inica aplicação em modo debug agente passando os parametros debug=true
