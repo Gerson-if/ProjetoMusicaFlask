@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>login - {{ titulo}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}">
+    <!--aqui usamos o url_for para deixar mais dinamico que recebe dois paramatros-->
+    <!-- a pasta static e a padrao para o css bem como template para nossas paginas-->
+</head>
+<body>
+
+    {% with menssagem = get_flashed_messages() %}
+        {% if menssagem %}
+            <ul class=flashes>
+            {% for novamensagem in menssagem %}
+               <div class="alert alert-secondary" role="alert" id="menssagens">
+                  {{ novamensagem }}
+               </div>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %} <!-- codigo de aviso flash pego no site oficial-->
+
+    <div class="container"> <!-- encapsulamos o form numa div-->
+        <form method="post" action="/autenticar">
+            <fieldset>
+                <legend>Entre com suas credenciais</legend>
+
+                <div class="mb-3">
+                    <label for="txtLogin">login</label>
+                    <input type="text" id="txtLogin" name="txtLogin" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="txtSenha">Senha</label>
+                    <input type="password" id="txtSenha" name="txtSenha" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary"> Logar</button>
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

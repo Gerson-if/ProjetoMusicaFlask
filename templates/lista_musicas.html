@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de musica</title>
-    <style type="text/css">
-        table, td, th {
-            border: 1px solid rgb(0, 0, 0);
-        }
+{% extends "padrao.html" %}
+<!-- usamos herança com flask aqui dizendo qual pagina é a padrao-->
 
-    </style>
-</head>
-    <body>
-        <h2>{{ titulo }}</h2>
-        <table>
-            <tr>
-                <th> Nome da Musica</th>
-                <th> Cantor / Banda</th>
-                <th> Genero</th>
-            </tr>
-            {% for musics in musicas%}
-            <tr>
-                <td>{{musics.nome}}</td>
-                <td>{{musics.cantorBanda}}</td>
-                <td>{{musics.genero}}</td>
-            </tr>
-            {%endfor%}
-        </table>
+ <!--agora vamos dinamizar o conteudo conforme abaixo usando um bloco de conteudo-->
+ {% block conteudo%}<!--inicio do bloco-->
+<table class="table table-hover ">
+    <thead class="table-dark">
+        <tr>
+            <th> Nome da Musica</th>
+            <th> Cantor / Banda</th>
+            <th> Genero</th>
+        </tr>
+    </thead>
 
-    </body>
-</html>
+    <tbody> 
+        {% for musicaatual in musicas%}
+        <tr>
+            <td>{{musicaatual.nome}}</td>
+            <td>{{musicaatual.cantorBanda}}</td>
+            <td>{{musicaatual.genero}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}<!-- fim do bloco-->

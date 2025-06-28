@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ titulo }}</title>
-</head>
-<body>
-    <form method="post">
-        <label> Nome da Musica: </label>
-        <input type="text" name="txtName">
+{% extends "padrao.html"%} <!-- herdamos da pagina padrao, fazemos a importação-->
 
-        <label for=""> Cantor Banda: </label>
-        <input type="text" name="txtCantor">
+<!--agora criamos um novo bloco dinamico-->
+{% block conteudo%}   <!--usamos o nome conteudo como constante pois na pagina padrao seu nome é este-->
+   <form method="post" action="/adicionar"><!-- criamos um formulario que usa metodo post
+        e paramentro action apos usarmos o botao-->
+        <fieldset class="container"> <!-- abre uma borda em volta desses elementos-->
 
-        <label for=""> Genero: </label>
-        <input type="text" name="txtGenero">
+            <div class="mb-3"> <!--aqui usamos um div para separar e estilizar os elementos-->
+                <label for="txtNome"> Nome da Musica: </label>
+                <input type="text" name="txtNome" id="txtNome" class="form-control" ><!--aqui onde recebemos os dados-->
+            </div>
 
-        <button type="submit"> Cadastrar Musica</button>
+            <div class="mb-3">
+                <label for="txtCantor"> Cantor Banda: </label>
+                <input type="text" name="txtCantor" id="txtCantor" class="form-control"><!--aqui usamos uma classe de estilo tambem para o input--> 
+            </div>
 
+            <div class="mb-3">
+                <label for="txtGenero"> Genero: </label>
+                <input type="text" name="txtGenero" id="txtGenero" class="form-control">
+            </div>
+
+            <div class="mb-3"><!-- esse mb-3 e para o espaçamento-->
+                 <button type="submit" class="btn btn-primary"> Cadastrar Musica</button>
+            </div>
+        </fieldset>
     </form>
-</body>
-</html>
+{%endblock%}<!--fechamos o bloco de conteudo-->
